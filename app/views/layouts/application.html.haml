@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+    %title= full_title(yield(:title))
+    = stylesheet_link_tag 'application', media: 'all', |
+      'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    /[if lt IE 9]
+  %script{:src => "//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"}
+  %body
+    %header
+      %nav.navbar.navbar-custom.navbar-fixed-top.improv{:role => "navigation"}
+        .container
+          .navbar-header
+            %a.logo.page-scroll{:href => root_path}
+              = image_tag "studiare_logo.png"
+            %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+          .collapse.navbar-collapse.navbar-right.navbar-main-collapse
+            %ul.nav.navbar-nav
+              %li
+                %a.page-scroll{:href => root_path} Home
+              %li
+                %a.page-scroll{:href => about_path} About
+              %li
+                %a.page-scroll{:href => "#" } Log-in
+    .container
+      = yield
+      = render 'layouts/footer'

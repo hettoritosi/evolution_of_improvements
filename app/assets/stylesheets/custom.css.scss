@@ -8,7 +8,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 73px;
 }
 
 section {
@@ -37,6 +37,7 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
 }
 
 h2 {
@@ -97,6 +98,15 @@ footer {
     li {
       float: left;
       margin-left: 15px;
+    }
+  }
+}
+
+nav.improv {
+  ul {
+    li a {
+      color: #fff;
+      padding: 25px 15px;
     }
   }
 }
