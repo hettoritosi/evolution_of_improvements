@@ -4,5 +4,6 @@
     <data-source name="SQLite -" uuid="72c84481-711f-42b4-8dd4-9c3e598ba4b3">
       <secret-storage>master_key</secret-storage>
     </data-source>
+    <data-source name="Rails evolution_of_improvements: development" uuid="73de8d8c-abff-47e3-8bcd-4df5ef8ba945" />
   </component>
 </project>
