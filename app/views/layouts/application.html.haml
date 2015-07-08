@@ -2,7 +2,7 @@
 %html
   %head
     %title= full_title(yield(:title))
-    = stylesheet_link_tag 'application', media: 'all', |
+    = stylesheet_link_tag 'application', media: 'all',
       'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -26,8 +26,17 @@
                 %a.page-scroll{:href => root_path} Home
               %li
                 %a.page-scroll{:href => about_path} About
-              %li
-                %a.page-scroll{:href => "#" } Log-in
+              - if logged_in?
+                %li= link_to "Users", '#'
+                %li
+                  %a.page-scroll{:href => 'sessions/new' } Profile
+                %li
+                  %a.page-scroll{:href => 'sessions/new' } Setting
+                %li
+                  = link_to "Log out", logout_path, method: "delete"
+              -else
+                %li
+                  %a.page-scroll{:href => 'sessions/new' } Log-in
     .container
       = yield
       = render 'layouts/footer'
