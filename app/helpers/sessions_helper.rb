@@ -30,6 +30,12 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def only_logged
+    if !logged_in?
+      redirect_to root_path
+    end
+  end
+
   # Forgets a persistent session.
   def forget(user)
     user.forget
