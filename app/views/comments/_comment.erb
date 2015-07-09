@@ -1,10 +1,13 @@
 
-<p id="comment_<%= comment.id %>">
+<p>
+<div class="well well-lg" id="comment_<%= comment.id %>">
   <%= "#{comment.user.name} - #{comment.content}" %>
   <%= link_to '(Destroy)', comment, method: :delete,
               remote: true,
               id: "remove_comment_#{comment.id}" %>
+</div>
 </p>
+
 
 <script>
     $('#remove_comment_<%= comment.id %>').bind('ajax:success',

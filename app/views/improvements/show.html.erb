@@ -1,9 +1,16 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+<div class="alert alert-info">
+  <div class="alert alert-success">
+  <p>
   <strong>Title:</strong>
   <%= @improvement.title %>
 </p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @improvement.content %>
+</p>
+</div>
 
 <p>
   <strong>Category:</strong>
@@ -11,15 +18,10 @@
 </p>
 
 <p>
-  <strong>Content:</strong>
-  <%= @improvement.content %>
-</p>
-
-<p>
   <strong>User:</strong>
   <%= @improvement.user.name %>
 </p>
-
+</div>
 
 <br>
 <br>
