@@ -23,15 +23,15 @@
           .collapse.navbar-collapse.navbar-right.navbar-main-collapse
             %ul.nav.navbar-nav
               %li
-                %a.page-scroll{:href => root_path} Home
+                -if logged_in?
+                  = link_to "Home", current_user
+                -else
+                  %a.page-scroll{:href => root_path} Home
               %li
                 %a.page-scroll{:href => about_path} About
               - if logged_in?
-                %li= link_to "Users", '#'
                 %li
-                  %a.page-scroll{:href => 'sessions/new' } Profile
-                %li
-                  %a.page-scroll{:href => 'sessions/new' } Setting
+                  = link_to "Settings", edit_user_path(current_user)
                 %li
                   = link_to "Log out", logout_path, method: "delete"
               -else

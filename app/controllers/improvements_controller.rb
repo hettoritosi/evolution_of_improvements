@@ -10,6 +10,7 @@ class ImprovementsController < ApplicationController
   # GET /improvements/1
   # GET /improvements/1.json
   def show
+    @improvement = Improvement.find(params[:id])
   end
 
   # GET /improvements/new
@@ -25,6 +26,7 @@ class ImprovementsController < ApplicationController
   # POST /improvements.json
   def create
     @improvement = Improvement.new(improvement_params)
+    @improvement.user_id = current_user.id
 
     respond_to do |format|
       if @improvement.save

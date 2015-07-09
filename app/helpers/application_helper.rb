@@ -8,4 +8,10 @@
         page_title + " | " + base_title                 # String concatenation
       end
     end
+
+    def comments(commentable)
+      render partial: "comments/comments",
+             locals: {comments: commentable.comments.all}
+    end
+
   end

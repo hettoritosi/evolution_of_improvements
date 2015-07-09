@@ -17,8 +17,18 @@
 
 <p>
   <strong>User:</strong>
-  <%= @improvement.user_id %>
+  <%= @improvement.user.name %>
 </p>
 
+
+<br>
+<br>
+<br>
+<br>
+
+<%= comments @improvement %>
+<%= render partial: "comments/new_comment"%>
+
+<%- if current_user.id == @improvement.user_id%>
 <%= link_to 'Edit', edit_improvement_path(@improvement) %> |
-<%= link_to 'Back', improvements_path %>
+<%-end%>
