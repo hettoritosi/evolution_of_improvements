@@ -4,7 +4,6 @@ class ImprovementsController < ApplicationController
   # GET /improvements
   # GET /improvements.json
   def index
-    @improvements = Improvement.all
   end
 
   # GET /improvements/1
