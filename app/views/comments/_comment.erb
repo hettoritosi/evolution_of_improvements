@@ -1,6 +1,16 @@
-<p>
-  <%= "#{comment.user.name} - #{comment.content}" %> -
-  <%= link_to '(Destroy)', comment, method: :delete %>
+
+<p id="comment_<%= comment.id %>">
+  <%= "#{comment.user.name} - #{comment.content}" %>
+  <%= link_to '(Destroy)', comment, method: :delete,
+              remote: true,
+              id: "remove_comment_#{comment.id}" %>
 </p>
 
+<script>
+    $('#remove_comment_<%= comment.id %>').bind('ajax:success',
+    function(){
+    $('#comment_<%=comment.id%>').remove();
+    }
+    );
+</script>
 

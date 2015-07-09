@@ -27,8 +27,16 @@
 <br>
 
 <%= comments @improvement %>
+
+<br>
+<br>
+<br>
+<br>
 <%= render partial: "comments/new_comment"%>
 
 <%- if current_user.id == @improvement.user_id%>
-<%= link_to 'Edit', edit_improvement_path(@improvement) %> |
+    <br>
+    <%= link_to 'Edit', edit_improvement_path(@improvement), class: "btn btn-primary btn-go" %>
+    &nbsp;
+    <%= link_to 'Destroy', @improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go" %>
 <%-end%>
