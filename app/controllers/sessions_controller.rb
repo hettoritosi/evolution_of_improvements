@@ -10,11 +10,15 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       remember user
       redirect_to user
+    elsif user.permission == false
+      flash.now[:notpermission] = "You do not have a permission"
+      render "new"
     else
-      @erro_login = true
+      flash.now[:error] = "Invalid password or email"
       render "new"
     end
   end
+
 
   def destroy
     log_out if logged_in?
