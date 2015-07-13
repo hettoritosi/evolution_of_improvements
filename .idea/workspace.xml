@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26b2004b-1410-4c12-b9b3-5e816d1f65fd" name="Default" comment="only_logged">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20150710140951_add_admin_to_users.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20150713131844_add_permission_to_users.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/comments/_comment.erb" afterPath="$PROJECT_DIR$/app/views/comments/_comment.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_footer.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_footer.erb" />
