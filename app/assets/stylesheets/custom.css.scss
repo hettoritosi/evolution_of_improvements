@@ -177,3 +177,30 @@ input {
 a.btn-go:visited {
     color: #ffffff !important;
   }
+
+div.alert {
+  border: #71A4BD solid 1px;
+  h3 {
+    font-size: 22px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 0;
+    color: #184961;
+  }
+  p {
+    font-size: 14px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #555;
+  }
+}
+
+.alert-info {
+  background-color: #D5E8F2;
+  hr {
+    border-top-color: #71A4BD;
+  }
+}
+
+.edit {
+  margin-top: 15px;
+}
