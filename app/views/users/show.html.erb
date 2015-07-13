@@ -47,7 +47,11 @@
         <td><%= improvement.content %></td>
         <td><%= improvement.user.name %></td>
         <td><%= link_to 'Show', improvement, class: "btn btn-primary btn-go" %></td>
+        <%- if current_user.id == improvement.user_id || current_user.admin? %>
+        <td><%= link_to 'Edit', edit_improvement_path(improvement), class: "btn btn-primary btn-go" %></td>
+        <td><%= link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go" %></td>
       </tr>
+  <% end %>
   <% end %>
   </tbody>
 </table>

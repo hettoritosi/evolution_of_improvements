@@ -41,7 +41,7 @@
 <br>
 <%= render partial: "comments/new_comment"%>
 
-<%- if current_user.id == @improvement.user_id%>
+<%- if current_user.id == @improvement.user_id || current_user.admin? %>
     <br>
     <%= link_to 'Edit', edit_improvement_path(@improvement), class: "btn btn-primary btn-go" %>
     &nbsp;
