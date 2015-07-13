@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       remember user
       redirect_to user
-    elsif user.permission == false
+    elsif user && user.permission == false
       flash.now[:notpermission] = "You do not have a permission"
       render "new"
     else
