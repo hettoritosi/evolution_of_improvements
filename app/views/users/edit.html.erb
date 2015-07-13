@@ -26,6 +26,11 @@
             <%= f.label :password_confirmation, "Confirmation" %>
             <%= f.password_field :password_confirmation %>
 
+            <% if current_user.admin? && !current_user?(@user) %>
+            <%= f.label :permission, "Permission" %>
+            <%= f.collection_radio_buttons :permission, [[true, 'Sim'] ,[false, 'Não']], :first, :last %>
+            <% end %>
+
             <%= f.submit "Save changes", class: "btn btn-primary" %>
         <% end %>
         <div class="gravatar_edit">
@@ -35,4 +40,5 @@
     </div>
 </div>
 <% end %>
+
 

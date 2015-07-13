@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :only_logged, except: [:create,:new]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user, only: [:destroy]
+  include ApplicationHelper
+
   # GET /users
   # GET /users.json
   def index
@@ -71,6 +75,21 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :permission)
     end
+
+  # Confirms the correct user.
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user) || is_admin?
+  end
+
+  private
+      # Confirms an admin user.
+  def admin_user
+  redirect_to(root_url) unless current_user.admin?
+  end
+
+
+
 end

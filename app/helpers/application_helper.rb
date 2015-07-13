@@ -11,7 +11,13 @@
 
     def comments(commentable)
       render partial: "comments/comments",
-             locals: {comments: commentable.comments.all}
+      locals: {comments: commentable.comments.all}
     end
+
+    def is_admin?
+      current_user.admin == true
+    end
+
+
 
   end
