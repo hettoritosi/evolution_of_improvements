@@ -16,4 +16,8 @@
 !/log/.keep
 /tmp
 
-/.idea
+#Project
+workspace.xml
+tasks.xml
+
+/.idea/*
