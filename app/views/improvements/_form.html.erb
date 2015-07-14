@@ -23,7 +23,13 @@
     <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
-  <div class="actions">
+
+    <div class="field">
+      <%= f.label :status_id, "Status" %>
+      <%= f.select :status_id, options_for_select(@status.collect { |x|[x.name, x.id] }, 1)%>
+    </div>
+
+    <div class="actions">
     <%= f.submit "New Improvement", class: "btn btn-primary" %>
   </div>
 <% end %>

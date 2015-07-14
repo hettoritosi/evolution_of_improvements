@@ -20,6 +20,19 @@
   <strong>User:</strong>
   <%= @improvement.user.name %>
 </p>
+
+  <p>
+    <strong>Status:</strong>
+  <%- if @improvement.status.name == "Finished" %>
+      <td><font color="#00FF00"><%= @improvement.status.name %></font></td>
+  <% end %>
+  <%- if @improvement.status.name == "In Progress" %>
+      <td><font color="#00BFFF"><%= @improvement.status.name %></font></td>
+  <% end %>
+  <%- if @improvement.status.name == "Initialized" %>
+      <td><font color="#FF0000"><%= @improvement.status.name %></font></td>
+  <% end %>
+  </p>
 </div>
 
 <br>

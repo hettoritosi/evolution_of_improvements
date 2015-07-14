@@ -7,4 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #users = User.create([{name:"Héttori2"},{email:"hettori2@gmail.com"},{password:"asdqwe"},{admin:true},{permission:true}])
-User.create(name: "Héttori", email: "hettori@gmail.com", password: "asdqwe", admin: true, permission: true)
+Status.create(name: "Initialized")
+Status.create(name: "In Progress")
+Status.create(name: "Finished")
