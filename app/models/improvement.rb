@@ -1,10 +1,12 @@
 class Improvement < ActiveRecord::Base
-  attr_accessor :status_id
 
   belongs_to :user
   has_many :comments
   belongs_to :status
-  belongs_to :responsible
+  belongs_to :responsible, class_name: User
+
+  delegate :name, to: :user
+
   validates :content, length: {maximum:2000}
   validates_presence_of :title
   validates_presence_of :content

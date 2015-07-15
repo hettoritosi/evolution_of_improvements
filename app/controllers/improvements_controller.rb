@@ -1,5 +1,7 @@
 class ImprovementsController < ApplicationController
   before_action :set_improvement, only: [:show, :edit, :update, :destroy]
+  before_action :set_responsibles, only: [:new, :edit]
+  before_action :set_statuses, only: [:new, :edit]
 
   # GET /improvements
   # GET /improvements.json
@@ -14,14 +16,10 @@ class ImprovementsController < ApplicationController
   # GET /improvements/new
   def new
     @improvement = Improvement.new
-    @status = Status.all
-    @responsible = User.where(permission: true).all
   end
 
   # GET /improvements/1/edit
   def edit
-    @status = Status.all
-    @responsible = Responsible.all
   end
 
   # POST /improvements
@@ -71,7 +69,16 @@ class ImprovementsController < ApplicationController
       @improvement = Improvement.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_responsibles
+      @responsible = User.where(permission: true).all
+    end
+
+    def set_statuses
+      @status = Status.all
+    end
+
+
+  # Never trust parameters from the scary internet, only allow the white list through.
     def improvement_params
       params.require(:improvement).permit(:title, :category, :content, :user_id, :status_id, :responsible_id)
     end

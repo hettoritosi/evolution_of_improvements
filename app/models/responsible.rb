@@ -1,3 +1,3 @@
 class Responsible < ActiveRecord::Base
-  has_one :improvement
+  has_many :improvement
 end
