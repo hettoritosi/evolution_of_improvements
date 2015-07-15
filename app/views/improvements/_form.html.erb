@@ -29,6 +29,11 @@
       <%= f.select :status_id, options_for_select(@status.collect { |x|[x.name, x.id] }, 1)%>
     </div>
 
+    <div class="field">
+      <%= f.label :responsible_id, "Responsible" %>
+      <%= f.select :responsible_id, options_for_select(@responsible.collect { |x|[x.name, x.id] }, 1)%>
+    </div>
+
     <div class="actions">
     <%= f.submit "New Improvement", class: "btn btn-primary" %>
   </div>

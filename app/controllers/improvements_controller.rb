@@ -16,11 +16,13 @@ class ImprovementsController < ApplicationController
   def new
     @improvement = Improvement.new
     @status = Status.all
+    @responsible = Responsible.all
   end
 
   # GET /improvements/1/edit
   def edit
     @status = Status.all
+    @responsible = Responsible.all
   end
 
   # POST /improvements
@@ -72,6 +74,6 @@ class ImprovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def improvement_params
-      params.require(:improvement).permit(:title, :category, :content, :user_id, :status_id)
+      params.require(:improvement).permit(:title, :category, :content, :user_id, :status_id, :responsible_id)
     end
 end
