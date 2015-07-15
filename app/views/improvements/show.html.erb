@@ -36,6 +36,14 @@
   <p>
     <strong>Responsible:</strong>
     <%= @improvement.responsible.name %>
+
+  <p>
+    <strong>Created At:</strong>
+    <%= @improvement.created_at.to_datetime.strftime("%m/%d/%Y")%>
+
+  <p>
+    <strong>Update At:</strong>
+    <%= @improvement.updated_at.to_datetime.strftime("%m/%d/%Y")%>
 </div>
 
 <br>
