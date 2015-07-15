@@ -9,14 +9,13 @@ class ImprovementsController < ApplicationController
   # GET /improvements/1
   # GET /improvements/1.json
   def show
-    @improvement = Improvement.find(params[:id])
   end
 
   # GET /improvements/new
   def new
     @improvement = Improvement.new
     @status = Status.all
-    @responsible = Responsible.all
+    @responsible = User.where(permission: true).all
   end
 
   # GET /improvements/1/edit
