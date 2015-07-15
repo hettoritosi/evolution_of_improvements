@@ -1,4 +1,6 @@
 class Improvement < ActiveRecord::Base
+  attr_accessor :status_id
+
   belongs_to :user
   has_many :comments
   belongs_to :status
