@@ -33,7 +33,8 @@
     <th>Title</th>
     <th>Category</th>
     <th>Content</th>
-    <th>User</th>
+    <th>Created by</th>
+    <th>Responsible</th>
     <th>Status</th>
     <th colspan="3"></th>
   </tr>
@@ -47,6 +48,7 @@
         <td><%= improvement.category %></td>
         <td><%= improvement.content %></td>
         <td><%= improvement.user.name %></td>
+        <td><%= improvement.responsible.name %></td>
         <%- if improvement.status.name == "Finished" %>
             <td><font color="#00FF00"><%= improvement.status.name %></font></td>
         <% end %>

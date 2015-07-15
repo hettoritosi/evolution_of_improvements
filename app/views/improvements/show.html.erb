@@ -17,7 +17,7 @@
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>Created by:</strong>
   <%= @improvement.user.name %>
 </p>
 
@@ -33,6 +33,9 @@
       <td><font color="#FF0000"><%= @improvement.status.name %></font></td>
   <% end %>
   </p>
+  <p>
+    <strong>Responsible:</strong>
+    <%= @improvement.responsible.name %>
 </div>
 
 <br>

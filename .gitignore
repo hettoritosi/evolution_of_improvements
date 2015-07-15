@@ -16,8 +16,9 @@
 !/log/.keep
 /tmp
 
+<<<<<<< HEAD
 #Project
 workspace.xml
 tasks.xml
 
-/.idea/*
+>>>>>>> includestatus
