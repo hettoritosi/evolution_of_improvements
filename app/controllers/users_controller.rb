@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @improvements = Improvement.all
+    @improvements = Improvement.order(params[:sort])
   end
 
   # GET /users/new

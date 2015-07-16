@@ -6,6 +6,7 @@ class ImprovementsController < ApplicationController
   # GET /improvements
   # GET /improvements.json
   def index
+    @improvements = Improvement.order(params[:sort])
   end
 
   # GET /improvements/1
@@ -16,6 +17,7 @@ class ImprovementsController < ApplicationController
   # GET /improvements/new
   def new
     @improvement = Improvement.new
+    @status = Status.all
   end
 
   # GET /improvements/1/edit
@@ -64,22 +66,22 @@ class ImprovementsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_improvement
-      @improvement = Improvement.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_improvement
+    @improvement = Improvement.find(params[:id])
+  end
 
-    def set_responsibles
-      @responsible = User.where(permission: true).all
-    end
+  def set_responsibles
+    @responsible = User.where(permission: true).all
+  end
 
-    def set_statuses
-      @status = Status.all
-    end
+  def set_statuses
+    @status = Status.all
+  end
 
 
   # Never trust parameters from the scary internet, only allow the white list through.
-    def improvement_params
-      params.require(:improvement).permit(:title, :category, :content, :user_id, :status_id, :responsible_id)
-    end
+  def improvement_params
+    params.require(:improvement).permit(:title, :category, :content, :user_id, :status_id, :responsible_id)
+  end
 end
