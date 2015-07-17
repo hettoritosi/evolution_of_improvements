@@ -28,12 +28,12 @@
 
     <div class="field">
       <%= f.label :status_id, "Status" %>
-      <%= f.select :status_id, options_for_select(@status.collect { |x|[x.name, x.id] }, 1)%>
+      <%= f.select :status_id, options_for_select(@status.collect { |x|[x.name, x.id] }, @improvement.status.id)%>
     </div>
 
     <div class="field">
       <%= f.label :responsible_id, "Responsible" %>
-      <%= f.select :responsible_id, options_for_select(@responsible.collect { |x|[x.name, x.id] }, 1)%>
+      <%= f.select :responsible_id, options_for_select(@responsible.collect { |x|[x.name, x.id] }, @improvement.responsible.id)%>
     </div>
 
     <div class="actions">

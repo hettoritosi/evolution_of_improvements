@@ -10,4 +10,6 @@ class Improvement < ActiveRecord::Base
   validates :content, length: {maximum:2000}
   validates_presence_of :title
   validates_presence_of :content
+
+
 end

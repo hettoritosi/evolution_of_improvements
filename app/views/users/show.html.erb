@@ -43,8 +43,7 @@
 
   <tbody>
   <% @improvements.each do |improvement| %>
-    <%- if improvement.status.name == "Finished" %>
-      <tr class="success">
+      <tr class= <%= improvement.status.get_class %> >
         <td><%= improvement.title %></td>
         <td><%= improvement.category %></td>
         <td><%= improvement.content %></td>
@@ -66,58 +65,7 @@
         <td><%= link_to 'Edit', edit_improvement_path(improvement), class: "btn btn-primary btn-go" %></td>
         <td><%= link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go" %></td>
         <% end %>
-    <% end %>
-      </tr>
-    <%- if improvement.status.name == "In Progress" %>
-        <tr class="info">
-            <td><%= improvement.title %></td>
-            <td><%= improvement.category %></td>
-            <td><%= improvement.content %></td>
-            <td><%= improvement.name %></td>
-            <td><%= improvement.responsible.name %></td>
-            <td><%= improvement.created_at.to_datetime.strftime("%m/%d/%Y")%></td>
-            <td><%= improvement.updated_at.to_datetime.strftime("%m/%d/%Y")%></td>
-            <%- if improvement.status.name == "Finished" %>
-                <td><font color="#00FF00"><%= improvement.status.name %></font></td>
-            <% end %>
-            <%- if improvement.status.name == "In Progress" %>
-                <td><font color="#00BFFF"><%= improvement.status.name %></font></td>
-            <% end %>
-            <%- if improvement.status.name == "Initialized" %>
-                <td><font color="#FF0000"><%= improvement.status.name %></font></td>
-            <% end %>
-                <td><%= link_to 'Show', improvement, class: "btn btn-primary btn-go" %></td>
-            <%- if current_user.id == improvement.user_id || current_user.admin? %>
-                <td><%= link_to 'Edit', edit_improvement_path(improvement), class: "btn btn-primary btn-go" %></td>
-                <td><%= link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go" %></td>
-            <% end %>
-    <% end %>
-        </tr>
-    <%- if improvement.status.name == "Initialized" %>
-              <tr class="danger">
-                <td><%= improvement.title %></td>
-                <td><%= improvement.category %></td>
-                <td><%= improvement.content %></td>
-                <td><%= improvement.name %></td>
-                <td><%= improvement.responsible.name %></td>
-                <td><%= improvement.created_at.to_datetime.strftime("%m/%d/%Y")%></td>
-                <td><%= improvement.updated_at.to_datetime.strftime("%m/%d/%Y")%></td>
-                <%- if improvement.status.name == "Finished" %>
-                    <td><font color="#00FF00"><%= improvement.status.name %></font></td>
-                <% end %>
-                <%- if improvement.status.name == "In Progress" %>
-                    <td><font color="#00BFFF"><%= improvement.status.name %></font></td>
-                <% end %>
-                <%- if improvement.status.name == "Initialized" %>
-                    <td><font color="#FF0000"><%= improvement.status.name %></font></td>
-                <% end %>
-                <td><%= link_to 'Show', improvement, class: "btn btn-primary btn-go" %></td>
-                <%- if current_user.id == improvement.user_id || current_user.admin? %>
-                    <td><%= link_to 'Edit', edit_improvement_path(improvement), class: "btn btn-primary btn-go" %></td>
-                    <td><%= link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go" %></td>
-                <% end %>
-    <% end %>
-  <% end %>
+      <% end %>
                 </tr>
   </tbody>
 </table>
