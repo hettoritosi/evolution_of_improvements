@@ -91,11 +91,11 @@ class UsersController < ApplicationController
   end
 
   def sort_column
-    Improvement.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    Improvement.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 
 
