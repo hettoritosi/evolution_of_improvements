@@ -2,11 +2,11 @@ class ImprovementsController < ApplicationController
   before_action :set_improvement, only: [:show, :edit, :update, :destroy]
   before_action :set_responsibles, only: [:new, :edit]
   before_action :set_statuses, only: [:new, :edit]
+  helper_method :sort_column, :sort_direction
 
   # GET /improvements
   # GET /improvements.json
   def index
-    @improvements = Improvement.order(params[:sort])
   end
 
   # GET /improvements/1
@@ -84,4 +84,14 @@ class ImprovementsController < ApplicationController
   def improvement_params
     params.require(:improvement).permit(:title, :category, :content, :user_id, :status_id, :responsible_id)
   end
+
+  def sort_column
+    Improvement.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+
 end

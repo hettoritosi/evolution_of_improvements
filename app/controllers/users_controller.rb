@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user, only: [:destroy]
   include ApplicationHelper
+  helper_method :sort_column, :sort_direction
 
   # GET /users
   # GET /users.json
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @improvements = Improvement.order(params[:sort])
+    @improvements = Improvement.order(sort_column + " " + sort_direction)
   end
 
   # GET /users/new
@@ -87,6 +88,14 @@ class UsersController < ApplicationController
       # Confirms an admin user.
   def admin_user
   redirect_to(root_url) unless current_user.admin?
+  end
+
+  def sort_column
+    Improvement.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
 

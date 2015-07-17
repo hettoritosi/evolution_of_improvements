@@ -23,21 +23,20 @@
   <%= @user.email %>
 </p>
 
-<p id="notice"><%= notice %></p>
 
 <h1>Listing Improvements</h1>
 
 <table class = "table table-bordered">
   <thead>
   <tr>
-    <th><%= link_to "Title", :sort => "title"%></th>
+    <th><%= sortable "Title"%></th>
     <th>Category</th>
     <th>Content</th>
-    <th><%= link_to "Created by", :sort => "user_id"%></th>
-    <th>Responsible</th>
-    <th><%= link_to "Created At", :sort => "created_at" %></th>
-    <th><%= link_to "Updated At", :sort => "updated_at" %></th>
-    <th>Status</th>
+    <th><%= sortable "user_id", "Created by" %></th>
+    <th><%= sortable "user_id", "Responsible" %></th>
+    <th><%= sortable "created_at", "Created At" %></th>
+    <th><%= sortable "updated_at", "Updated At" %></th>
+    <th><%= sortable "status_id", "Status"%></th>
     <th colspan="3"></th>
   </tr>
   </thead>
