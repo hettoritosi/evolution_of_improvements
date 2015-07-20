@@ -24,12 +24,14 @@
             %ul.nav.navbar-nav
               %li
                 -if logged_in?
-                  = link_to "Home", current_user
+                  = link_to "Home", improvements_path
                 -else
                   %a.page-scroll{:href => root_path} Home
               %li
                 %a.page-scroll{:href => about_path} About
               - if logged_in?
+                %li
+                  = link_to "My Improvements", current_user
                 %li
                   = link_to "Settings", edit_user_path(current_user)
                 %li

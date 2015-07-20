@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @improvements = Improvement.order(sort_column + " " + sort_direction)
+    @improvements = Improvement.where("(user_id == ? OR responsible_id == ?) AND status_id != 3", current_user.id, current_user.id).order(sort_column + " " + sort_direction)
   end
 
   # GET /users/new
