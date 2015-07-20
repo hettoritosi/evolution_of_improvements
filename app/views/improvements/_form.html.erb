@@ -26,15 +26,15 @@
 
     <div class="field">
       <%= f.label :status_id, "Status" %>
-      <%= f.select :status_id, options_for_select(@status.collect { |x|[x.name, x.id] }, 1)%>
+      <%= f.select :status_id, options_for_select(@status.collect { |x|[x.name, x.id] }, @improvement.status_id ||  1)%>
     </div>
 
     <div class="field">
       <%= f.label :responsible_id, "Responsible" %>
-      <%= f.select :responsible_id, options_for_select(@responsible.collect { |x|[x.name, x.id] }, 1)%>
+      <%= f.select :responsible_id, options_for_select(@responsible.collect { |x|[x.name, x.id] }, @improvement.responsible_id || 1)%>
     </div>
 
     <div class="actions">
-    <%= f.submit "New Improvement", class: "btn btn-primary" %>
+    <%= f.submit message, class: "btn btn-primary" %>
   </div>
 <% end %>
