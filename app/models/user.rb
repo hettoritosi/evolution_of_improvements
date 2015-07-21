@@ -12,7 +12,13 @@ class User < ActiveRecord::Base
   has_many :improvements
 
 
-
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      all
+    end
+  end
 
 
 
