@@ -154,6 +154,8 @@ input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
+  display: inline;
+
 }
 
 input {
@@ -217,4 +219,9 @@ div.alert {
 
 .pretty th .desc {
   background-image: url(/images/down_arrow.gif);
+}
+
+.form-field span {
+  display:inline-block;
+  margin-right:10px;
 }

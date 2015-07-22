@@ -25,18 +25,20 @@
 
 
 <br>
-<form style="width: 200px">
+<div class="form-field">
+<form style="width: 300px">
   <%= form_tag improvements_path, :method => 'get' do %>
       <% Status.all.each do |status| %>
-          <%= check_box_tag "status[]", status.id %>
+          <span><%=check_box_tag "status[]", status.id %></span>
           <%= "#{status.name}" %>
       <% end %>
       <p>
+        <br>
         <%= text_field_tag :search, params[:search] %>
         <%= submit_tag "Search", :title => nil,class: "btn btn-primary btn-go" %>
       </p>
   <% end %>
-
+  </div>
 
 <h1>My Improvements</h1>
 
