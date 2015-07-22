@@ -18,6 +18,7 @@
       = check_box_tag "status[]", status.id
       = "#{status.name}"
     %p
+      %br/
       = text_field_tag :search, params[:search]
       = submit_tag "Search", :title => nil,class: "btn btn-primary btn-go"
   %h1 All Improvements
