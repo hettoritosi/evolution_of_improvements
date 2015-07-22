@@ -1,15 +1,15 @@
 <%= form_for(@improvement) do |f| %>
-  <% if @improvement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@improvement.errors.count, "error") %> prohibited this improvement from being saved:</h2>
+    <% if @improvement.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@improvement.errors.count, "error") %> prohibited this improvement from being saved:</h2>
 
-      <ul>
-      <% @improvement.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% @improvement.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
   <div class="field">
     <%= f.label :title %><br>

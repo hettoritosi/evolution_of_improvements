@@ -13,6 +13,7 @@ class ImprovementsController < ApplicationController
                                .order(sort_column + " " + sort_direction)
                                .paginate(:per_page => 10, :page => params[:page])
     @user = current_user
+
   end
 
   # GET /improvements/1
@@ -35,6 +36,8 @@ class ImprovementsController < ApplicationController
   def create
     @improvement = Improvement.new(improvement_params)
     @improvement.user_id = current_user.id
+    @status = Status.all
+    @responsible = Responsible.all
 
     respond_to do |format|
       if @improvement.save
