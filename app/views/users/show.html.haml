@@ -47,19 +47,16 @@
             %td= improvement.responsible.name
             %td= improvement.created_at.to_datetime.strftime("%m/%d/%Y")
             %td= improvement.updated_at.to_datetime.strftime("%m/%d/%Y")
-            - if improvement.status.name == "Finished"
-              %td
-                %font{:color => "#00FF00"}= improvement.status.name
-            - if improvement.status.name == "In Progress"
-              %td
-                %font{:color => "#00BFFF"}= improvement.status.name
-            - if improvement.status.name == "Initialized"
-              %td
-                %font{:color => "#FF0000"}= improvement.status.name
-            %td= link_to 'Show', improvement, class: "btn btn-primary btn-go"
-            - if current_user.id == improvement.user_id || current_user.admin?
-              %td= link_to 'Edit', edit_improvement_path(improvement), class: "btn btn-primary btn-go"
-              %td= link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go"
+            %form
+            %td
+              = form_for improvement do |f|
+                =f.select(:status_id, options_for_select([['Initialized',1],['In Progress',2],['Finished',3]], improvement.status.id))
+                = f.submit "Update", :title => nil, class: "btn btn-primary btn-go btn-table"
+            %td
+              =link_to 'Show', improvement, class: "btn btn-primary btn-go btn-table"
+              - if current_user.id == improvement.user_id || current_user.admin?
+                = link_to 'Edit', edit_improvement_path(improvement), class: "btn btn-primary btn-go btn-table"
+                = link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go btn-table"
       = will_paginate @improvements
     %br/
     = link_to 'New Improvement', new_improvement_path, class: "btn btn-primary btn-go"

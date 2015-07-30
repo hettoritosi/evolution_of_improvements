@@ -13,7 +13,6 @@ class ImprovementsController < ApplicationController
                                .order(sort_column + " " + sort_direction)
                                .paginate(:per_page => 10, :page => params[:page])
     @user = current_user
-
   end
 
   # GET /improvements/1
@@ -55,7 +54,7 @@ class ImprovementsController < ApplicationController
   def update
     respond_to do |format|
       if @improvement.update(improvement_params)
-        format.html { redirect_to @improvement, notice: 'Improvement was successfully updated.' }
+        format.html { redirect_to improvements_path, notice: 'Improvement was successfully updated.' }
         format.json { render :show, status: :ok, location: @improvement }
       else
         format.html { render :edit }

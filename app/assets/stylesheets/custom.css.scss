@@ -220,3 +220,17 @@ div.alert {
 .pretty th .desc {
   background-image: url(/images/down_arrow.gif);
 }
+
+table tr td {
+  min-width: 95px;
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+.btn-table {
+  padding: 6px;
+  margin: 4px;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
