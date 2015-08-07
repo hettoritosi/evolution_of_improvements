@@ -16,12 +16,13 @@
     %br/
     %form
       = form_tag improvements_path, :method => 'get' do
-        - Status.all.each do |status|
-          = check_box_tag "status[]", status.id
+        - all_status = params["status"]
+        - Status.all.each_with_index do |status,i|
+          = check_box_tag "status[]", status.id, all_status && all_status.include?((i + 1).to_s)
           = "#{status.name}"
         %p
           %br/
-          = text_field_tag :search, params[:search]
+          = text_field_tag :search, params[:search] , placeholder: params[:search]
           = submit_tag "Search", :title => nil,class: "btn btn-primary btn-go"
   .col-md-10
     %h1 My Improvements
