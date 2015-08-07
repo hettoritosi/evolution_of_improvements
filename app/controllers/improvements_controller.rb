@@ -2,6 +2,7 @@ class ImprovementsController < ApplicationController
   before_action :set_improvement, only: [:show, :edit, :update, :destroy]
   before_action :set_responsibles, only: [:new, :edit]
   before_action :set_statuses, only: [:new, :edit]
+  before_action :only_logged
   helper_method :sort_column, :sort_direction
 
   # GET /improvements
