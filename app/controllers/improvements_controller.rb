@@ -18,8 +18,15 @@ class ImprovementsController < ApplicationController
 
   # GET /improvements/1
   # GET /improvements/1.json
-  def show
+def show
+    @improvement = Improvement.find(params[:id])
+    respond_to do |format|
+    if
+    format.html {@improvement}
+    format.json { render json: @improvement, include: [:user]}
+    end
   end
+end
 
   # GET /improvements/new
   def new

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="SQLite -" uuid="72c84481-711f-42b4-8dd4-9c3e598ba4b3">
-      <secret-storage>master_key</secret-storage>
-    </data-source>
+    <data-source name="SQLite -" uuid="72c84481-711f-42b4-8dd4-9c3e598ba4b3" />
     <data-source name="Rails evolution_of_improvements: development" uuid="73de8d8c-abff-47e3-8bcd-4df5ef8ba945" />
     <data-source name="Rails evolution_of_improvements: test" uuid="95917651-b172-49fb-93e5-e25f0a812b85" />
   </component>

@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
+
   def new
     @erro_login = false
   end
+
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
