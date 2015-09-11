@@ -8,6 +8,14 @@ class ImprovementsController < ApplicationController
   # GET /improvements
   # GET /improvements.json
   def index
+    @improvement = Improvement.all
+    respond_to do |format|
+      if
+      format.html {@improvement}
+        format.json { render json: @improvement, include: [:user , :status, :responsible]}
+      end
+    end
+
     all_status = Status.get_all_status
     @improvements = Improvement.search(params[:search])
                                .where("status_id in (?)", params[:status] || all_status)
