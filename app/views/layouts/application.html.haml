@@ -31,7 +31,7 @@
                 %a.page-scroll{:href => about_path} About
               - if logged_in?
                 %li
-                  = link_to "My Improvements", current_user
+                  = link_to "My Tasks", current_user
                 %li
                   = link_to "Settings", edit_user_path(current_user)
                 %li

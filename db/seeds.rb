@@ -7,12 +7,3 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #users = User.create([{name:"Héttori2"},{email:"hettori2@gmail.com"},{password:"asdqwe"},{admin:true},{permission:true}])
-Status.create(name: "Initialized")
-Status.create(name: "In Progress")
-Status.create(name: "Finished")
-Responsible.create(name: "Murilo")
-Responsible.create(name: "Fellipe")
-Responsible.create(name: "Ciro")
-Responsible.create(name: "Rafael")
-Responsible.create(name: "Héttori")
-Responsible.create(name: "Nathalia")

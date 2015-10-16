@@ -24,7 +24,7 @@
           = text_field_tag :search, params[:search]
           = submit_tag "Search", :title => nil,class: "btn btn-primary btn-go"
   .col-md-10
-    %h1 All Improvements
+    %h1 All Tasks
     %table.table.table-bordered
       %col{:style => "width:100%"}
       %thead
@@ -60,4 +60,4 @@
                 = link_to 'Destroy', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go btn-table"
       = will_paginate @improvements
     %br/
-    = link_to 'New Improvement', new_improvement_path, class: "btn btn-primary btn-go"
+    = link_to 'New Task', new_improvement_path, class: "btn btn-primary btn-go"

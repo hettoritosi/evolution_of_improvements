@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :only_logged, except: [:create,:new]
+  before_action :only_logged, except: [:create,:new, :index]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user, only: [:destroy]
   include ApplicationHelper
@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+
 
   # GET /users/1
   # GET /users/1.json
@@ -91,7 +93,7 @@ class UsersController < ApplicationController
   private
       # Confirms an admin user.
   def admin_user
-  redirect_to(root_url) unless current_user.admin?
+    redirect_to(root_url) unless current_user.admin?
   end
 
   def sort_column

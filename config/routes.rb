@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create', via: :options
   delete 'logout'  => 'sessions#destroy'
-  match 'login' => 'sessions#create', via: :options
+  match 'improvements/:id' => 'improvements#update_mobile', via: [:options]
+  post 'improvements/new' => 'improvements#create_mobile', via: [:options]
+  get 'improvements/:id' => 'improvements#show', via: [:options]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

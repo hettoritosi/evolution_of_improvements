@@ -2,7 +2,8 @@ class ImprovementsController < ApplicationController
   before_action :set_improvement, only: [:show, :edit, :update, :destroy]
   before_action :set_responsibles, only: [:new, :edit]
   before_action :set_statuses, only: [:new, :edit]
-  before_action :only_logged
+  before_action :only_logged, except:[:create_mobile, :update_mobile, :index, :show ]
+
   helper_method :sort_column, :sort_direction
 
   # GET /improvements
@@ -10,10 +11,8 @@ class ImprovementsController < ApplicationController
   def index
     @improvement = Improvement.all
     respond_to do |format|
-      if
-      format.html {@improvement}
+        format.html {@improvement}
         format.json { render json: @improvement, include: [:user , :status, :responsible]}
-      end
     end
 
     all_status = Status.get_all_status
@@ -29,10 +28,8 @@ class ImprovementsController < ApplicationController
 def show
     @improvement = Improvement.find(params[:id])
     respond_to do |format|
-    if
     format.html {@improvement}
-    format.json { render json: @improvement, include: [:user]}
-    end
+    format.json { render json: @improvement, include: [:user,:status,:responsible]}
   end
 end
 
@@ -44,19 +41,20 @@ end
 
   # GET /improvements/1/edit
   def edit
+    @status = Status.all
   end
 
   # POST /improvements
   # POST /improvements.json
   def create
-    @improvement = Improvement.new(improvement_params)
-    @improvement.user_id = current_user.id
-    @status = Status.all
-    @responsible = Responsible.all
+    @improvement = Improvement.new (improvement_params)
+   @improvement.user_id = current_user.id
+   @status = Status.all
+   @responsible = User.all
 
     respond_to do |format|
       if @improvement.save
-        format.html { redirect_to @improvement, notice: 'Improvement was successfully created.' }
+        format.html { redirect_to @improvement, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @improvement }
       else
         format.html { render :new }
@@ -65,12 +63,23 @@ end
     end
   end
 
+  def create_mobile
+    @improvement = Improvement.new
+    @improvement.status_id = 2  #Status In Progress
+    @improvement.responsible_id = params[:responsible_id].to_i
+    @improvement.user_id = 9    #User Id Héttori
+    @improvement.title = params[:title]
+    @improvement.category = params[:category]
+    @improvement.content = params[:content]
+    @improvement.save
+  end
+
   # PATCH/PUT /improvements/1
   # PATCH/PUT /improvements/1.json
   def update
     respond_to do |format|
       if @improvement.update(improvement_params)
-        format.html { redirect_to improvements_path, notice: 'Improvement was successfully updated.' }
+        format.html { redirect_to improvements_path, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @improvement }
       else
         format.html { render :edit }
@@ -79,12 +88,18 @@ end
     end
   end
 
+  def update_mobile
+      @improvement = Improvement.find(params[:id])
+      @improvement.status_id = params[:status_id].to_i
+      @improvement.save
+  end
+
   # DELETE /improvements/1
   # DELETE /improvements/1.json
   def destroy
     @improvement.destroy
     respond_to do |format|
-      format.html { redirect_to current_user, notice: 'Improvement was successfully destroyed.' }
+      format.html { redirect_to current_user, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -108,6 +123,8 @@ end
   def improvement_params
     params.require(:improvement).permit(:title, :category, :content, :user_id, :status_id, :responsible_id)
   end
+
+
 
   def sort_column
     Improvement.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
