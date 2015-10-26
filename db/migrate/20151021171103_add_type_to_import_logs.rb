@@ -1,5 +1,5 @@
 class AddTypeToImportLogs < ActiveRecord::Migration
   def change
-    add_column :import_logs, :type_import, :string
+    add_column :import_logs, :type, :string
   end
 end
