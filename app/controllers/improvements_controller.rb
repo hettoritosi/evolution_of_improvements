@@ -23,6 +23,7 @@ class ImprovementsController < ApplicationController
     @user = current_user
   end
 
+
   # GET /improvements/1
   # GET /improvements/1.json
 def show

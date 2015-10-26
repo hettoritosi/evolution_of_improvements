@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715170343) do
+ActiveRecord::Schema.define(version: 20151023131141) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -19,6 +19,18 @@ ActiveRecord::Schema.define(version: 20150715170343) do
     t.integer  "improvement_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "import_logs", force: :cascade do |t|
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "type_import"
+    t.string   "status_import"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "total_percent"
   end
 
   create_table "improvements", force: :cascade do |t|

@@ -1,0 +1,67 @@
+<%= form_for @import_log, multipart: true do |f|%>
+    <% if @import_log.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@import_log.errors.count, "error") %> prohibited this import_log from being saved:</h2>
+
+          <ul>
+            <% @import_log.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+<input type="hidden" id="import_id" value='<%= @import_log_update ? @import_log_update.id : 0  %>'/>
+
+
+
+<div class = 'importcsvfield'>
+  <h3>Import a CSV File</h3>
+
+      <%= f.label :type_import, "Type File" %>
+      <%= f.select(:type_import, options_for_select(@import_type )) %>
+
+      <%= f.file_field :file %>
+      <%= f.submit "Import CSV", class: "btn btn-primary" %>
+<br>
+  <br>
+      <%= f.label "Percentage" %>
+
+
+  <div class="progress">
+    <div id= 'progressbarimport' class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+     0
+    </div>
+  </div>
+  <div id='status_import'>
+    <%= @import_log_update ? @import_log_update.status_import : nil  %>
+  </div>
+  Obs:
+</div>
+<% end %>
+
+
+
+<script>
+
+    $(setInterval(refresh_ajax, 2000));
+
+    function refresh_ajax(){
+        $.ajax({
+            type: 'GET',
+            url: 'ajax_import_log',
+            dataType: 'json',
+            data: {id: $('#import_id').val()},
+            success: function(data){
+                $('#progressbarimport').text(data[0]);
+                $('#status_import').text(data[1]);
+                $('#progressbarimport').attr({
+                    'aria-valuenow': data[0],
+                    'style': 'width: '+data[0]+'%'
+                });
+
+            }
+        })
+    }
+
+</script>

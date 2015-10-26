@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   get 'sessions/new'
 
   get 'static_pages/home'
@@ -8,6 +10,13 @@ Rails.application.routes.draw do
   resources :improvements
   resources :comments
   resources :users
+  resources :import_logs do
+    collection do
+      get :ajax_import_log
+    end
+  end
+
+
   root 'static_pages#home'
   get 'about'   => 'static_pages#about'
   get 'signup'  => 'users#new'
@@ -17,6 +26,7 @@ Rails.application.routes.draw do
   match 'improvements/:id' => 'improvements#update_mobile', via: [:options]
   post 'improvements/new' => 'improvements#create_mobile', via: [:options]
   get 'improvements/:id' => 'improvements#show', via: [:options]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
