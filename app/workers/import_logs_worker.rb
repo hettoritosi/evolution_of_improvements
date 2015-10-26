@@ -14,8 +14,8 @@ class ImportLogsWorker
           :title => (row[0].blank? ? 'Title missing' : row[0]),
           :content   => row[1],
           :category  => row[3],
-          :status_id => '3',
-          :user_id => '9',
+          :status_id => '3',            #id 2 = In Progress
+          :user_id => '9',              #id 6 = Murilo
           :responsible_id =>'9'
       )
       record.save!
