@@ -1,0 +1,25 @@
+Title,Content,Responsable,Category
+Evolução Arquitetura,Migração para AWS,MV,Arquitetura / Geral
+Evolução Arquitetura,Criar HVC e isolar,MV,Arquitetura / Geral
+Conteúdo,Questões discursivas: incorporar para os alunos de Direito,FM,Desafio Nota Máxima
+Conteúdo,Implantar campo de responsável por conteúdo no dashboard de controle de conteúdos,FM,Desafio Nota Máxima
+,"Implantar relatório de Conteudistas (nome do profe, conteúdo produzido, questões aprovadas pelo revisor que o professor subiu o conteúdo e não deletou, caracteres nível básico intermediário e avançado - níveis aprovados pelo revisor, dados do profe, caminho de aprendizagem não deletado? )",FM,Desafio Nota Máxima
+Sistemas de Comunicação,Sistema de mailing para professores e professores+alunos (de acordo com o grupo acadêmico),MV,Desafio Nota Máxima
+Sistemas de Comunicação,"Colocar ""Caixa de mensagens"" para todos os usuários",MV,Desafio Nota Máxima
+Sistemas de Comunicação,Implantar funcionalidade para o professor mandar email para todos os alunos que ainda não bateram uma determinada meta,MV,Desafio Nota Máxima
+Sistemas de Comunicação,"Integração com ferramentas de comunicação (Colaborar, Moodle)",MV,Desafio Nota Máxima
+Intervenção Acadêmica,"Intervenção Acadêmica: implantar módulo de intervenção acadêmica (mapa do aluno, tutorial para acompanhar alunos e indicadores)",Ambos,Desafio Nota Máxima
+Intervenção Acadêmica,Tarefas que serão acompanhados na Intervenção Acadêmica,Ambos,Desafio Nota Máxima
+Eficiência,Mudança nos algoritmos para evitar repetição de questões entre alunos da mesma turma,MV,Desafio Nota Máxima
+Eficiência,Algoritmos de identificação de probabilidade de cola nível turma,MV,Desafio Nota Máxima
+IaaS,Estudar AWS e soluções para migração Heroku -> AWS,MV,IaaS
+IaaS,Entender problemas de memória / stress test plataforma,,IaaS
+Brasas Kick-off,Estudar e desenhar integração com google hangouts,FM,Desafio Brasas
+DNM 15.2,Melhorias Criação Caminhos de Aprendizagem ,,Desafio Nota Máxima
+Eficiência,Delimitar um tempo para a lista do aluno e travar o browser - limitar tempo de resposta,,Studiare
+Olimpíadas ENEM,Simulador quais faculdades passaria,YG,Olimpíadas ENEM
+Olimpíadas ENEM,Criar insígnias e lógica proposta pelo Marketing,FM,Olimpíadas ENEM
+Olimpíadas ENEM,Linkar com Facebooks: mandar notificações e convidar amigos,FM/ CC,Olimpíadas ENEM
+Lançaemento DNM 15.2,Evolução do nome da turma para Professor acompanhar,MV,Desafio Nota Máxima
+Lançamento DNM 15.2,"Realizar teste de cadastro 15.2 até 14/8  (reset de senha, enviar e-mail novo semestre)",MV,Desafio Nota Máxima
+Modelos Adaptive,Melhorar custo e arquitetura dos modelos 33 e trabalhar formato gradiente ,MV,Desafio Nota Máxima
