@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 20151023131141) do
   end
 
   create_table "improvements", force: :cascade do |t|
-    t.text    "title"
-    t.string  "category"
-    t.text    "content"
-    t.integer "user_id"
-    t.text    "created_at",     null: false
-    t.text    "updated_at",     null: false
-    t.integer "status_id"
-    t.integer "responsible_id"
+    t.string   "title"
+    t.string   "category"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "status_id"
+    t.integer  "responsible_id"
   end
 
   create_table "responsibles", force: :cascade do |t|
