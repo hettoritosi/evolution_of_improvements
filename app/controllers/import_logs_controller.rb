@@ -3,7 +3,7 @@ class ImportLogsController < ApplicationController
   def create
     @import_type = [['Tasks', "Improvement"]]
     @import_log = ImportLog.new(importlog_params)
-    @import_log.status_import = 'Initialized'
+    @import_log.status_import = "Initialized"
     respond_to do |format|
       if @import_log.save
         ImportLogsWorker.perform_async(@import_log.id)
