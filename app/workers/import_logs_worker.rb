@@ -4,7 +4,7 @@ class ImportLogsWorker
 
   def perform(id)
     @import_log = ImportLog.find(id)
-    @import_log.status_import = 'In Progress'
+    @import_log.status_import = "In Progress"
     @import_log.save
     current_line = 1
     csv_file = CSV.read(@import_log.file.path)
@@ -26,7 +26,7 @@ class ImportLogsWorker
         @import_log.save
       end
     end
-    @import_log.status_import = 'Finished'
+    @import_log.status_import = "Finished"
     @import_log.save
     end
 
