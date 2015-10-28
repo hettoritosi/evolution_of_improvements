@@ -15,8 +15,8 @@ class ImportLogsWorker
           :content   => row[1],
           :category  => row[3],
           :status_id => '2',            #id 2 = In Progress
-          :user_id => '6',              #id 6 = Murilo
-          :responsible_id =>'6'
+          :user_id => '1',              #id 6 = Murilo
+          :responsible_id =>'1'
       )
       record.save!
       total_percent = (100*current_line)/total
