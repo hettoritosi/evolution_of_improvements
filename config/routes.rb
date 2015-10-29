@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create', via: :options
   delete 'logout'  => 'sessions#destroy'
-  match 'improvements/:id' => 'improvements#update_mobile', via: [:options]
+  match 'improvements/mobile/:id' => 'improvements#update_mobile', via: [:options]
   post 'improvements/new' => 'improvements#create_mobile', via: [:options]
   get 'improvements/:id' => 'improvements#show', via: [:options]
 
