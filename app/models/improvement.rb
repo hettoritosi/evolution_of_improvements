@@ -19,19 +19,19 @@ class Improvement < ActiveRecord::Base
     end
   end
 
-  def self.import_improvements()
-    CSV.foreach("public/Limbo.csv") do |row|
-      record = Improvement.new(
-          :title => row[0],
-          :content   => row[1],
-          :category  => row[3],
-          :status_id => '3',
-          :user_id => '9',
-          :responsible_id =>'9'
-        )
-        record.save!
-    end
-
-  end
+  # def self.import_improvements()
+  #   CSV.foreach("public/Limbo.csv") do |row|
+  #     record = Improvement.new(
+  #         :title => row[0],
+  #         :content   => row[1],
+  #         :category  => row[3],
+  #         :status_id => '3',
+  #         :user_id => '9',
+  #         :responsible_id =>'9'
+  #       )
+  #       record.save!
+  #   end
+  #
+  # end
 
 end
