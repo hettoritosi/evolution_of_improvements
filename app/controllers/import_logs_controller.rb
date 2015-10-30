@@ -25,8 +25,13 @@ class ImportLogsController < ApplicationController
       end
     end
     @import_log.status_import = "Finished"
-    @import_log.save
-    redirect_to root_path
+    respond_to do |format|
+      if @import_log.save
+        format.html { redirect_to controller: 'import_logs', action: 'new', id: @import_log.id}
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def new
