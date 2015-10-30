@@ -4,6 +4,10 @@ class ImportLogsController < ApplicationController
     @import_type = [['Tasks', "Improvement"]]
     @import_log = ImportLog.new(importlog_params)
     @import_log.status_import = "Initialized"
+    uploaded_io = params[:import_log][:file]
+    File.open(Rails.root.join('public', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
     respond_to do |format|
       if @import_log.save
         ImportLogsWorker.perform_async(@import_log.id)
