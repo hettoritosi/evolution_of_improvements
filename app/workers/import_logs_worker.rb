@@ -2,12 +2,11 @@ class ImportLogsWorker
 
   include Sidekiq::Worker
 
-  def perform(id)
+  def perform(id, csv_file)
     @import_log = ImportLog.find(id)
     @import_log.status_import = "In Progress"
     @import_log.save
     current_line = 1
-    csv_file = CSV.read(Rails.root.join('te,', @import_log.file_file_name))
     total = csv_file.count
     csv_file.each do |row|
       record = Improvement.new(
