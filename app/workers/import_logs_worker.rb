@@ -7,7 +7,7 @@ class ImportLogsWorker
     @import_log.status_import = "In Progress"
     @import_log.save
     current_line = 1
-    csv_file = CSV.read(Rails.root.join('public', @import_log.file_file_name))
+    csv_file = CSV.read(Rails.root.join('tmp', "#{@import_log.id}.csv"))
     total = csv_file.count
     csv_file.each do |row|
       record = Improvement.new(

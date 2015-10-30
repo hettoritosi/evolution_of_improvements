@@ -4,8 +4,9 @@ class ImportLogsController < ApplicationController
     @import_type = [['Tasks', "Improvement"]]
     @import_log = ImportLog.new(importlog_params)
     @import_log.status_import = "Initialized"
+    @import_log.save
     uploaded_io = params[:import_log][:file]
-    File.open(Rails.root.join('public', uploaded_io.original_filename), 'wb') do |file|
+    File.open(Rails.root.join('tmp', "#{@import_log.id}.csv"), 'wb') do |file|
       file.write(uploaded_io.read)
     end
     respond_to do |format|
