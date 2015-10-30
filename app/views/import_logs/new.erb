@@ -1,14 +1,15 @@
 <%= form_for @import_log, multipart: true do |f|%>
     <% if @import_log.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@import_log.errors.count, "error") %> prohibited this import_log from being saved:</h2>
+            <div id="error_explanation">
+              <h2><%= pluralize(@import_log.errors.count, "error") %> prohibited this import_log from being saved:</h2>
 
-          <ul>
-            <% @import_log.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
+              <ul>
+                <% @import_log.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        </input>
     <% end %>
 
 <input type="hidden" id="import_id" value='<%= @import_log_update ? @import_log_update.id : 0  %>'/>
@@ -33,9 +34,9 @@
      0
     </div>
   </div>
-  <div id='status_import'>
-    <%= @import_log_update ? @import_log_update.status_import : nil  %>
-  </div>
+  <!--<div id='status_import'>-->
+    <!--<%= @import_log_update ? @import_log_update.status_import : nil  %>-->
+  <!--</div>-->
   <br>
   <br>
   <font color="red">
@@ -65,7 +66,6 @@
                     'aria-valuenow': data[0],
                     'style': 'width: '+data[0]+'%'
                 });
-
             }
         })
     }
