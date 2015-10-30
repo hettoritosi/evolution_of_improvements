@@ -3,3 +3,4 @@ class ImportLog < ActiveRecord::Base
   validates_attachment :file, presence: true,
                        :content_type => { content_type: 'text/csv' }
 end
+

@@ -25,6 +25,20 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  def create_mobile
+    user = User.find_by(email: params[:email].downcase)
+    if user && user.authenticate(params[:password]) && user.permission == true
+      params[:remember_me] == '1' ? remember(user) : forget(user)
+      remember user
+      redirect_to user
+    elsif user && user.permission == false
+      flash.now[:notpermission] = "You do not have a permission"
+      render "new"
+    else
+      flash.now[:error] = "Invalid password or email"
+      render "new"
+    end
+  end
 
 end
 

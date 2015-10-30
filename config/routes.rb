@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   get 'improvements/mobile/:id' => 'improvements#update_mobile'
   get 'sessions/new'
 
@@ -21,10 +22,11 @@ Rails.application.routes.draw do
   get 'about'   => 'static_pages#about'
   get 'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create', via: :options
+  post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   post 'improvements/new' => 'improvements#create_mobile', via: [:options]
   get 'improvements/:id' => 'improvements#show', via: [:options]
+  post   'login/mobile'   => 'sessions#create_mobile'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
