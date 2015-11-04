@@ -68,7 +68,7 @@ end
     @improvement = Improvement.new
     @improvement.status_id = 2  #Status In Progress
     @improvement.responsible_id = params[:responsible_id].to_i
-    @improvement.user_id = 1    #User Id Héttori
+    @improvement.user_id = params[:user_id].to_i
     @improvement.title = params[:title]
     @improvement.category = params[:category]
     @improvement.content = params[:content]
