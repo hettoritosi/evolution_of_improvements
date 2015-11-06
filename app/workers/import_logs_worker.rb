@@ -4,19 +4,22 @@ class ImportLogsWorker
 
   require 'csv'
 
-  def perform(id, csv_file)
+
+  def perform(id, csv_file, user)
     @import_log = ImportLog.find(id)
     @import_log.status_import = "In Progress"
     @import_log.save
+
     current_line = 1
     total = csv_file.count
     csv_file.each do |row|
+
       record = Improvement.new(
           :title => (row[0].blank? ? 'Title missing' : row[0]),
           :content   => row[1],
           :category  => row[3],
-          :status_id => '2',            #id 2 = In Progress
-          :user_id => '1',              #id 6 = Murilo
+          :status_id => '2',         #id 2 = In Progress
+          :user_id => user,              #id 6 = Murilo
           :responsible_id =>'1'
       )
       record.save!

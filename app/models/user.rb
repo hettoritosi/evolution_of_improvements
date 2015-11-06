@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :comments
   has_many :improvements
+  has_many :import_logs
 
 
   def self.search(search)

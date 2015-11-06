@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151023131141) do
+ActiveRecord::Schema.define(version: 20151106162837) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20151023131141) do
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
     t.integer  "total_percent"
+    t.integer  "user_id"
   end
 
   create_table "improvements", force: :cascade do |t|
