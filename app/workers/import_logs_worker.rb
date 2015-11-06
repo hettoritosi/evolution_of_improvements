@@ -2,6 +2,8 @@ class ImportLogsWorker
 
   include Sidekiq::Worker
 
+  require 'csv'
+
   def perform(id, csv_file)
     @import_log = ImportLog.find(id)
     @import_log.status_import = "In Progress"
