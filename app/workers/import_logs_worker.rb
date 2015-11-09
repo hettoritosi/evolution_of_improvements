@@ -10,19 +10,18 @@ class ImportLogsWorker
     @import_log.status_import = "In Progress"
     @import_log.save
 
-    current_line = 1
-    total = csv_file.count
-    csv_file.each do |row|
+    current_line = 2
+    total = CSV.read(csv_file).count
 
-      record = Improvement.new(
-          :title => (row[0].blank? ? 'Title missing' : row[0]),
-          :content   => row[1],
-          :category  => row[3],
+    CSV.foreach(csv_file, :headers => true, :col_sep => ',') do |row|
+        Improvement.create(
+          :title => row['Macro'] || 'Título Faltando',
+          :content   => row['Frente'],
+          :category  => row['Projeto'],
           :status_id => '2',         #id 2 = In Progress
-          :user_id => user,              #id 6 = Murilo
-          :responsible_id =>'1'
+          :user_id => user,
+          :responsible_id => user
       )
-      record.save!
       total_percent = (100*current_line)/total
       current_line += 1
       if @import_log.total_percent != total_percent

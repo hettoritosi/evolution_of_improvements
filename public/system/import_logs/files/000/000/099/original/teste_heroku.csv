@@ -1,0 +1,16 @@
+Macro,Frente,Responsável,Projeto
+Evoluções DNM 15.2,Loading do importar CSV,YG,Desafio Nota Máxima
+Evoluções DNM 15.2,Ajustar elementos visuais para Desafio Nota Máxima,RZ,Desafio Nota Máxima
+Evoluções DNM 15.2,Mapear evolucoes Trilha para DNM,RZ,Desafio Nota Máxima
+Evoluções DNM 15.2,Colocar unsubscribe nos emails,FM,Desafio Nota Máxima
+Fixes DNM15.2,"Refinar processo de cadastro com log de erros (e.g., alunos com matrícula repetida e cpfs diferentes)",MV,Desafio Nota Máxima
+Fixes DNM15.2,Refinar processo de envio de listas (email deliver_now),MV,Desafio Nota Máxima
+Lançamento DNM 16.1,Evoluir TinyMCE,FM,Desafio Nota Máxima
+Lançamento DNM 16.1,Arquitetura de subir imagens/ documentos ,FM,Desafio Nota Máxima
+Evolução App,App Dashboard,YG/ FM,Evolução App
+Evolução App,App: Tempo de Estudo e Meu Desempenho - subir,YG/ FM,Evolução App
+HR,Recrutar estagiários,NC,HR
+DNM 15.2,Tirar bônus points para listas,FM,Desafio Nota Máxima
+Eficiência,Questões repetidas -> minimizar casos ,MV,Desafio Nota Máxima
+Arquitetura 16.1,Estudar e preparar migração AWS,MV/ FM,Arquitetura
+Plataforma ToDo's,Subir estes ToDo's e vê-los na App,HT,App ToDo's

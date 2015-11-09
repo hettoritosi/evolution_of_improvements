@@ -1,15 +1,16 @@
 class ImportLogsController < ApplicationController
 
 
+  require 'csv'
+
   def create
     @import_log = ImportLog.new(importlog_params)
     @import_log.status_import = "In Progress"
     @import_log.save
     if @import_log.file.blank?
     else
-    csv_file = CSV.read(@import_log.file.path)
     user = current_user.id
-    ImportLogsWorker.perform_async(@import_log.id,csv_file, user)
+    ImportLogsWorker.perform_async(@import_log.id,@import_log.file.path, user)
     end
     respond_to do |format|
       if @import_log.save
@@ -24,7 +25,7 @@ class ImportLogsController < ApplicationController
   def new
      @import_type = [['Tasks', "Improvement"]]
      @import_log = ImportLog.new
-     if !params[:id].blank?
+     if !params[:id].blank?   #Se ele não estiver em branco
        @import_log_update = ImportLog.find(params[:id])
      end
 
