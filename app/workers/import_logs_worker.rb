@@ -5,15 +5,15 @@ class ImportLogsWorker
   require 'csv'
 
 
-  def perform(id, csv_file, user)
+  def perform(id, user)
     @import_log = ImportLog.find(id)
     @import_log.status_import = "In Progress"
     @import_log.save
 
     current_line = 2
-    total = CSV.read(csv_file).count
+    total = CSV.read(@import_log.file.path).count
 
-    CSV.foreach(csv_file, :headers => true, :col_sep => ',') do |row|
+    CSV.foreach(@import_log.file.path, :headers => true, :col_sep => ',') do |row|
         Improvement.create( {
           :title => row['Macro'] || 'Título Faltando',
           :content   => row['Frente'],
@@ -30,6 +30,8 @@ class ImportLogsWorker
         @import_log.save
       end
     end
+    @import_log.status_import = "Finished"
+    @import_log.save
     end
 
 

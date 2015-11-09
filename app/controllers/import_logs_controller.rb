@@ -1,6 +1,6 @@
 class ImportLogsController < ApplicationController
 
-  require 'csv'
+
 
   def create
     @import_log = ImportLog.new(importlog_params)
@@ -9,9 +9,7 @@ class ImportLogsController < ApplicationController
     if @import_log.file.blank?
     else
     user = current_user.id
-    ImportLogsWorker.perform_async(@import_log.id,@import_log.file.path, user)
-    @import_log.status_import = "Finished"
-    @import_log.save
+    ImportLogsWorker.perform_async(@import_log.id,user)
     end
     respond_to do |format|
       if @import_log.save
