@@ -13,7 +13,7 @@ class ImportLogsWorker
     current_line = 2
     total = CSV.read(csv_file).count
 
-    CSV.foreach(@import_log.file.path, :headers => true, :col_sep => ',') do |row|
+    CSV.foreach(csv_file, :headers => true, :col_sep => ',') do |row|
         Improvement.create( {
           :title => row['Macro'] || 'Título Faltando',
           :content   => row['Frente'],
@@ -30,8 +30,6 @@ class ImportLogsWorker
         @import_log.save
       end
     end
-    @import_log.status_import = "Finished"
-    @import_log.save
     end
 
 
