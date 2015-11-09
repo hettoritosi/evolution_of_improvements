@@ -20,7 +20,7 @@ class ImportLogsWorker
           :category  => row['Projeto'],
           :status_id => '2',         #id 2 = In Progress
           :user_id => user,
-          :responsible_id => '6'
+          :responsible_id => '1'
       )
       total_percent = (100*current_line)/total
       current_line += 1
