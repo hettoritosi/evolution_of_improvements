@@ -1,7 +1,6 @@
 class ImportLogsController < ApplicationController
 
 
-  require 'csv'
 
   def create
     @import_log = ImportLog.new(importlog_params)

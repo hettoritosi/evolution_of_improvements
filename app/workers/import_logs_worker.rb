@@ -14,13 +14,14 @@ class ImportLogsWorker
     total = CSV.read(csv_file).count
 
     CSV.foreach(@import_log.file.path, :headers => true, :col_sep => ',') do |row|
-        Improvement.create(
+        Improvement.create( {
           :title => row['Macro'] || 'Título Faltando',
           :content   => row['Frente'],
           :category  => row['Projeto'],
           :status_id => '2',         #id 2 = In Progress
           :user_id => user,
           :responsible_id => user
+                            }
       )
       total_percent = (100*current_line)/total
       current_line += 1
