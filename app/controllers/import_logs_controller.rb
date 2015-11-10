@@ -36,9 +36,6 @@ class ImportLogsController < ApplicationController
     respond_to do |format|
       if @import_log.save
         format.html { redirect_to controller: 'import_logs', action: 'new', id: @import_log.id}
-        if @import_log.total_percent == 100
-        flash[:notice] = "CSV was successfully imported."
-          end
       else
         @import_type = [['Tasks', "Improvement"]]
         format.html { render :new }
