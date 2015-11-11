@@ -34,4 +34,14 @@ class Improvement < ActiveRecord::Base
   #
   # end
 
+
+  def self.to_csv(options = {})
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |improvement|
+        csv << improvement.attributes.values_at(*column_names)
+      end
+    end
+  end
+
 end

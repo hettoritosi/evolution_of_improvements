@@ -1,5 +1,7 @@
 class ImportLogsController < ApplicationController
 
+  before_action :only_logged
+
   require 'csv'
 
   def create

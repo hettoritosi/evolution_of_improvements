@@ -13,6 +13,8 @@ class ImprovementsController < ApplicationController
     respond_to do |format|
         format.html {@improvement}
         format.json { render json: @improvement, include: [:user , :status, :responsible]}
+        format.csv { render text: @improvement.to_csv }
+        format.xls  { send_data @improvement.to_xls, :filename => 'improvements.xls'}
     end
 
     all_status = Status.get_all_status
@@ -95,12 +97,13 @@ end
       @improvement.save
   end
 
+
   # DELETE /improvements/1
   # DELETE /improvements/1.json
   def destroy
     @improvement.destroy
     respond_to do |format|
-      format.html { redirect_to current_user, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to improvements_path, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

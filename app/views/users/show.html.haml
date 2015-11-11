@@ -26,6 +26,9 @@
           = submit_tag "Search", :title => nil,class: "btn btn-primary btn-go"
   .col-md-10
     %h1 My Tasks
+    = link_to 'New Task', new_improvement_path, class: "btn btn-primary btn-go"
+    %br/
+    %br/
     %table.table.table-bordered
       %thead
         %tr

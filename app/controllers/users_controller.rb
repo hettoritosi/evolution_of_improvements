@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     all_status = Status.get_all_status
-    @improvements = Improvement.search(params[:search]).where("(user_id = ? OR responsible_id = ?) AND status_id != 3", current_user.id, current_user.id)
+    @improvements = Improvement.search(params[:search]).where("(responsible_id = ?) AND status_id != 3", current_user.id)
                         .where("status_id in (?)", params[:status] || all_status)
                         .order(sort_column + " " + sort_direction)
                         .paginate(:per_page => 10, :page => params[:page])
