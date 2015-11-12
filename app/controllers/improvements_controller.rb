@@ -57,7 +57,7 @@ end
 
     respond_to do |format|
       if @improvement.save
-        format.html { redirect_to @improvement, notice: 'Task was successfully created.' }
+        format.html { redirect_to @improvement, notice: 'Tarefa foi criada com sucesso.' }
         format.json { render :show, status: :created, location: @improvement }
       else
         format.html { render :new }
@@ -82,7 +82,7 @@ end
   def update
     respond_to do |format|
       if @improvement.update(improvement_params)
-        format.html { redirect_to improvements_path, notice: 'Task was successfully updated.' }
+        format.html { redirect_to improvements_path, notice: 'Tarefa foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @improvement }
       else
         format.html { render :edit }
@@ -103,7 +103,7 @@ end
   def destroy
     @improvement.destroy
     respond_to do |format|
-      format.html { redirect_to improvements_path, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to improvements_path, notice: 'Tarefa foi apagada com sucesso.' }
       format.json { head :no_content }
     end
   end

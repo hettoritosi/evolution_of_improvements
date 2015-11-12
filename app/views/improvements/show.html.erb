@@ -12,37 +12,37 @@
 <br>
   <hr>
 <p>
-  <strong>Category:</strong>
+  <strong>Categoria:</strong>
   <%= @improvement.category %>
 </p>
 
 <p>
-  <strong>Created by:</strong>
+  <strong>Criado por:</strong>
   <%= @improvement.name %>
 </p>
 
   <p>
     <strong>Status:</strong>
-  <%- if @improvement.status.name == "Finished" %>
+  <%- if @improvement.status.name == "Finalizado" %>
       <td><font color="#00FF00"><%= @improvement.status.name %></font></td>
   <% end %>
-  <%- if @improvement.status.name == "In Progress" %>
+  <%- if @improvement.status.name == "Em Progresso" %>
       <td><font color="#00BFFF"><%= @improvement.status.name %></font></td>
   <% end %>
-  <%- if @improvement.status.name == "Initialized" %>
+  <%- if @improvement.status.name == "Inicializado" %>
       <td><font color="#FF0000"><%= @improvement.status.name %></font></td>
   <% end %>
   </p>
   <p>
-    <strong>Responsible:</strong>
+    <strong>Responsável:</strong>
     <%= @improvement.responsible.name %>
 
   <p>
-    <strong>Created At:</strong>
+    <strong>Criado em:</strong>
     <%= @improvement.created_at.to_datetime.strftime("%m/%d/%Y")%>
 
   <p>
-    <strong>Update At:</strong>
+    <strong>Atualizado em:</strong>
     <%= @improvement.updated_at.to_datetime.strftime("%m/%d/%Y")%>
 </div>
 
@@ -59,7 +59,7 @@
 
 <%- if current_user.id == @improvement.user_id || current_user.admin? %>
     <br>
-    <%= link_to 'Edit', edit_improvement_path(@improvement), class: "btn btn-primary btn-go" %>
+    <%= link_to 'Editar', edit_improvement_path(@improvement), class: "btn btn-primary btn-go" %>
     &nbsp;
-    <%= link_to 'Destroy', @improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go" %>
+    <%= link_to 'Deletar', @improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go" %>
 <%-end%>

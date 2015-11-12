@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
       remember user
       redirect_to user
     elsif user && user.permission == false
-      flash.now[:notpermission] = "You do not have a permission"
+      flash.now[:notpermission] = "Você ainda não tem permissão"
       render "new"
     else
-      flash.now[:error] = "Invalid password or email"
+      flash.now[:error] = "Senha ou email inválidos"
       render "new"
     end
   end

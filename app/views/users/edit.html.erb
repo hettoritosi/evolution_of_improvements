@@ -14,28 +14,28 @@
     <div class="row edit">
       <div class="col-md-6 col-md-offset-3">
         <%= form_for(@user) do |f| %>
-            <%= f.label :name %>
+            <%= f.label :nome %>
             <%= f.text_field :name %>
 
             <%= f.label :email %>
             <%= f.email_field :email %>
 
-            <%= f.label :password %>
+            <%= f.label :senha %>
             <%= f.password_field :password %>
 
-            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.label :password_confirmation, "Confirmação" %>
             <%= f.password_field :password_confirmation %>
 
             <% if current_user.admin? && !current_user?(@user) %>
-            <%= f.label :permission, "Permission" %>
+            <%= f.label :permission, "Permissão" %>
             <%= f.collection_radio_buttons :permission, [[true, 'Sim'] ,[false, 'Não']], :first, :last %>
             <% end %>
 
-            <%= f.submit "Save changes", class: "btn btn-primary" %>
+            <%= f.submit "Salvar Mudanças", class: "btn btn-primary" %>
         <% end %>
         <div class="gravatar_edit">
           <%= gravatar_for @user %>
-          <a href="http://gravatar.com/emails" target="_blank">change</a>
+          <a href="http://gravatar.com/emails" target="_blank">Mudar</a>
       </div>
     </div>
 </div>

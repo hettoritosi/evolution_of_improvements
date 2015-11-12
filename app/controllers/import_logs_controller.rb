@@ -39,14 +39,14 @@ class ImportLogsController < ApplicationController
       if @import_log.save
         format.html { redirect_to controller: 'import_logs', action: 'new', id: @import_log.id}
       else
-        @import_type = [['Tasks', "Improvement"]]
+        @import_type = [['Tarefas', "Improvement"]]
         format.html { render :new }
       end
     end
   end
 
   def new
-     @import_type = [['Tasks', "Improvement"]]
+     @import_type = [['Tarefas', "Improvement"]]
      @import_log = ImportLog.new
      if !params[:id].blank?   #Se ele não estiver em branco
        @import_log_update = ImportLog.find(params[:id])

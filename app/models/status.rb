@@ -7,7 +7,7 @@ class Status < ActiveRecord::Base
   end
 
   def get_class
-    xyz = {"Initialized" => "danger", "In Progress" => "info", "Finished" => "success"}
+    xyz = {"Inicializado" => "danger", "Em Progresso" => "info", "Finalizado" => "success"}
     xyz[self.name]
   end
 

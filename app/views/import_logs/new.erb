@@ -17,16 +17,16 @@
 
 
 <div class = 'importcsvfield'>
-  <h3>Import a CSV File</h3>
+  <h3>Importar um CSV</h3>
 
-      <%= f.label :type_import, "Type File" %>
+      <%= f.label :type_import, "Tipo" %>
       <%= f.select(:type_import, options_for_select(@import_type )) %>
 
       <%= f.file_field :file %>
-      <%= f.submit "Import CSV", class: "btn btn-primary" %>
+      <%= f.submit "Importar CSV", class: "btn btn-primary" %>
 <br>
   <br>
-      <%= f.label "Percentage" %>
+      <%= f.label "Porcentagem" %>
 
 
   <div class="progress">

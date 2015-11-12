@@ -3,7 +3,7 @@
 <div class="well well-lg" id="comment_<%= comment.id %>">
   <%= "#{comment.user.name} - #{comment.content}" %>
   <%- if current_user.id == comment.user_id%>
-  <%= link_to '(Destroy)', comment, method: :delete,
+  <%= link_to '(Apagar)', comment, method: :delete,
               remote: true,
               id: "remove_comment_#{comment.id}" %>
   <%-end%>
