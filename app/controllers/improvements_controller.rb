@@ -6,6 +6,8 @@ class ImprovementsController < ApplicationController
 
   helper_method :sort_column, :sort_direction
 
+
+
   # GET /improvements
   # GET /improvements.json
   def index
@@ -14,8 +16,10 @@ class ImprovementsController < ApplicationController
         format.html {@improvement}
         format.json { render json: @improvement, include: [:user , :status, :responsible]}
         format.csv { render text: @improvement.to_csv }
-        format.xls  { send_data @improvement.to_xls, :filename => 'improvements.xls'}
+        format.xls  { send_data @improvement.to_xls(:columns => [:title,:content,:category,:responsible_id,:created_at,:updated_at], :headers => ['Título','Conteúdo','Categoria','Responsável ID','Criado em ','Atualizado em'])}
     end
+
+
 
     all_status = Status.get_all_status
     @improvements = Improvement.search(params[:search])
