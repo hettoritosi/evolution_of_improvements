@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106162837) do
+ActiveRecord::Schema.define(version: 20151113140757) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20151106162837) do
     t.string   "remember_digest"
     t.boolean  "admin",           default: false
     t.boolean  "permission",      default: false
+    t.string   "sub_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

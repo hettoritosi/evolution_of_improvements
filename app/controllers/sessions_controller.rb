@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
   def create_mobile
     user = User.find_by(email: params[:email].downcase)
     if user && user.authenticate(params[:password]) && user.permission == true
+      # render :json => {"user_id" =>user.id,"admin" => user.admin,"name" => user.name}
       render :json => [user.id, user.admin, user.name]
     elsif user && user.permission == false
       render 500

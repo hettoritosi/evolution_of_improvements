@@ -4,6 +4,18 @@ class ImportLogsController < ApplicationController
 
   require 'csv'
 
+  def verify_user_id_by_sub_name(sub_name)
+    user = current_user.id
+    sub_name = sub_name.split('/').first.to_s
+    user_id = User.where(:sub_name => sub_name.upcase.gsub(/\s+/, "")).first
+    if user_id
+      user_id.id
+    else
+      user
+    end
+  end
+
+
   def create
     @import_log = ImportLog.new(importlog_params)
     @import_log.status_import = "In Progress"
@@ -16,13 +28,14 @@ class ImportLogsController < ApplicationController
 
 
       CSV.foreach(@import_log.file.path, :headers => true, :col_sep => ',') do |row|
+        id = verify_user_id_by_sub_name row['Responsável']
         Improvement.create( {
                                 :title => row['Macro'] || 'Título Faltando',
                                 :content   => row['Frente'],
                                 :category  => row['Projeto'],
                                 :status_id => '2',         #id 2 = In Progress
                                 :user_id => user,
-                                :responsible_id => user
+                                :responsible_id  => id
                             }
         )
         total_percent = (100*current_line)/total

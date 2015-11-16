@@ -81,7 +81,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :permission)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :permission, :sub_name)
     end
 
   # Confirms the correct user.
@@ -103,6 +103,7 @@ class UsersController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
+
 
 
 end
