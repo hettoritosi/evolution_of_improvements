@@ -23,10 +23,15 @@
           .collapse.navbar-collapse.navbar-right.navbar-main-collapse
             %ul.nav.navbar-nav
               - if logged_in?
-                %li
-                  = link_to "Todas as Tarefas", improvements_path
-                %li
-                  = link_to "Minhas Tarefas", current_user
+                %li.dropdown
+                  %a{:href=>"#", :class=>"dropdown-toggle", "data-toggle"=>"dropdown"}Tarefas<b class="caret"></b>
+                  %ul.dropdown-menu
+                    %li.c2
+                      = link_to "Todas as Tarefas", improvements_path
+                    %li.c2
+                      = link_to "Minhas Tarefas", current_user
+                    %li.c2
+                      = link_to "Cemitério", cemiterio_path
                 %li
                   = link_to "Configurações", edit_user_path(current_user)
                 %li

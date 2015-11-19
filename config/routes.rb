@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'graveyard/index'
+
   get 'improvements/mobile/:id' => 'improvements#update_mobile'
   get 'sessions/new'
 
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
   post 'improvements/new' => 'improvements#create_mobile', via: [:options]
   get 'improvements/:id' => 'improvements#show', via: [:options]
   post   'login/mobile'   => 'sessions#create_mobile'
+  get 'cemiterio' => 'graveyard#index',:as => :cemiterio
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

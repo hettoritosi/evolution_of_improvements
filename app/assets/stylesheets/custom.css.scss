@@ -246,3 +246,10 @@ table tr td {
   float: right;
   margin: 4px;
 }
+
+li.c2 > a:link,
+li.c2 > a:active,
+li.c2 > a:hover,
+li.c2 > a:visited {
+  color: black;
+}
