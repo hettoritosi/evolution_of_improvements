@@ -27,8 +27,6 @@
           = submit_tag "Buscar", :title => nil,class: "btn btn-primary btn-go"
   .col-md-10
     %h1 Todas as Tarefas
-    = link_to 'Nova Tarefa', new_improvement_path, class: "btn btn-primary btn-go"
-    %br/
     %br/
     =link_to 'Download CSV', improvements_path(format: "csv"),data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go toright" if is_admin?
     =link_to 'Download Excel', improvements_path(format: "xls"),data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go toright" if is_admin?
@@ -69,6 +67,5 @@
                 = link_to 'Deletar', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go btn-table"
       = will_paginate @improvements
     %br/
-    = link_to 'Nova Tarefa', new_improvement_path, class: "btn btn-primary btn-go"
     %p
 

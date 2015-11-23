@@ -11,4 +11,6 @@ class Status < ActiveRecord::Base
     xyz[self.name]
   end
 
+
 end
+

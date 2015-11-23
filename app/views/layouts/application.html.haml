@@ -33,6 +33,8 @@
                     %li.c2
                       = link_to "Cemitério", cemiterio_path
                 %li
+                  = link_to "Nova Tarefa", new_improvement_path
+                %li
                   = link_to "Configurações", edit_user_path(current_user)
                 %li
                   = link_to "Usuários", users_path if is_admin?

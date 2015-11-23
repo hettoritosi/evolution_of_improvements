@@ -21,7 +21,6 @@
         = submit_tag "Buscar", :title => nil,class: "btn btn-primary btn-go"
   .col-md-10
     %h1 Cemitério
-    = link_to 'Nova Tarefa', new_improvement_path, class: "btn btn-primary btn-go"
     %br/
     %br/
     %table.table.table-bordered
@@ -58,4 +57,3 @@
                 = link_to 'Deletar', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go btn-table"
       = will_paginate @improvements
     %br/
-    = link_to 'Nova Tarefa', new_improvement_path, class: "btn btn-primary btn-go"
