@@ -2,7 +2,7 @@ class ImprovementsController < ApplicationController
   before_action :set_improvement, only: [:show, :edit, :update, :destroy]
   before_action :set_responsibles, only: [:new, :edit]
   before_action :set_statuses, only: [:new, :edit]
-  before_action :only_logged, except:[:create_mobile, :update_mobile, :index, :show ]
+  before_action :only_logged, except:[:create_mobile, :update_mobile, :index, :show, :index_mobile ]
 
   helper_method :sort_column, :sort_direction
 
@@ -18,7 +18,6 @@ class ImprovementsController < ApplicationController
         format.csv { render text: @improvement.to_csv }
         format.xls  { send_data @improvement.to_xls(:columns => [:title,:content,:category,:responsible_id,:created_at,:updated_at], :headers => ['Título','Conteúdo','Categoria','Responsável ID','Criado em ','Atualizado em'])}
     end
-
 
 
     all_status = Status.get_all_status
@@ -88,6 +87,7 @@ end
       if @improvement.update(improvement_params)
         format.html { redirect_to improvements_path, notice: 'Tarefa foi atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @improvement }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @improvement.errors, status: :unprocessable_entity }
@@ -111,6 +111,15 @@ end
       format.json { head :no_content }
     end
   end
+
+  def index_mobile
+    @improvement = Improvement.all
+    respond_to do |format|
+      format.html {@improvement}
+      format.json { render json: @improvement, include: [:user , :status, :responsible]}
+    end
+  end
+
 
   private
   # Use callbacks to share common setup or constraints between actions.
@@ -141,6 +150,8 @@ end
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
+
+
 
 
 end

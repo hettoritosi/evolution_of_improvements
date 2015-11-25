@@ -53,10 +53,10 @@
             %td= improvement.created_at.to_datetime.strftime("%m/%d/%Y")
             %td= improvement.updated_at.to_datetime.strftime("%m/%d/%Y")
             %form
-            %td
-              = form_for improvement do |f|
-                =f.select(:status_id, options_for_select([['Inicializado',1],['Em Progresso',2],['Finalizado',3]], improvement.status.id))
-                = f.submit "Atualizar Status", :title => nil, class: "btn btn-primary btn-go btn-table"
+            %td#tdname
+              = form_for improvement  do |f|
+                =f.select(:status_id, options_for_select([['Inicializado',1],['Em Progresso',2],['Finalizado',3]], improvement.status.id), {}, :id => "select_status")
+                = f.submit "Atualizar Status", :title => nil, class: "btn btn-primary btn-go btn-table", :id => "botao_teste"
             %td
               =link_to 'Exibir', improvement, class: "btn btn-primary btn-go btn-table"
               - if current_user.id == improvement.user_id || current_user.admin?
@@ -64,3 +64,5 @@
                 = link_to 'Deletar', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go btn-table"
       = will_paginate @improvements
     %br/
+
+:javascript

@@ -59,7 +59,7 @@
             %td
               = form_for improvement do |f|
                 =f.select(:status_id, options_for_select([['Inicializado',1],['Em Progresso',2],['Finalizado',3]], improvement.status.id))
-                = f.submit "Atualizar Status", :title => nil, class: "btn btn-primary btn-go btn-table"
+                = f.submit "Atualizar Status", :title => nil, class: "btn btn-primary btn-go btn-table", :id => "botao_teste"
             %td
               = link_to 'Exibir', improvement, class: "btn btn-primary btn-go btn-table"
               - if current_user.id == improvement.user_id || current_user.admin?
@@ -68,4 +68,3 @@
       = will_paginate @improvements
     %br/
     %p
-

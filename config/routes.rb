@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
 
   get 'graveyard/index'
-
-  get 'improvements/mobile/:id' => 'improvements#update_mobile'
+  get 'improvements/mobile' => 'improvements#index_mobile', via: [:options]
+  get 'improvements/mobile/:id' => 'improvements#update_mobile', via: [:options]
   get 'sessions/new'
 
   get 'static_pages/home'
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   post 'improvements/new' => 'improvements#create_mobile', via: [:options]
-  get 'improvements/:id' => 'improvements#show', via: [:options]
+  get 'improvements/mobile/:id' => 'improvements#show_mobile', via: [:options]
   post   'login/mobile'   => 'sessions#create_mobile'
   get 'cemiterio' => 'graveyard#index',:as => :cemiterio
 
