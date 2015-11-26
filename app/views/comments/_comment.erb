@@ -1,7 +1,7 @@
 
 <p>
 <div class="well well-lg" id="comment_<%= comment.id %>">
-  <%= "#{comment.user.name} - #{comment.content}" %>
+  <%= "#{comment.user.name} - #{comment.content} - #{comment.created_at.to_datetime.strftime("%d/%m/%Y")}" %>
   <%- if current_user.id == comment.user_id%>
   <%= link_to '(Apagar)', comment, method: :delete,
               remote: true,
