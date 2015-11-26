@@ -43,8 +43,8 @@
             %td= improvement.content
             %td= improvement.name
             %td= improvement.responsible.name
-            %td= improvement.created_at.to_datetime.strftime("%m/%d/%Y")
-            %td= improvement.updated_at.to_datetime.strftime("%m/%d/%Y")
+            %td= improvement.created_at.to_datetime.strftime("%d/%m/%Y")
+            %td= improvement.updated_at.to_datetime.strftime("%d/%m/%Y")
             %form
             %td
               = form_for improvement do |f|

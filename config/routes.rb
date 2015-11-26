@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   post 'improvements/new' => 'improvements#create_mobile', via: [:options]
-  get 'improvements/mobile/:id' => 'improvements#show_mobile', via: [:options]
   post   'login/mobile'   => 'sessions#create_mobile'
   get 'cemiterio' => 'graveyard#index',:as => :cemiterio
 

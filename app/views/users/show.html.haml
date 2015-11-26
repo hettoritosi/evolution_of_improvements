@@ -50,11 +50,11 @@
             %td= improvement.content
             %td= improvement.name
             %td= improvement.responsible.name
-            %td= improvement.created_at.to_datetime.strftime("%m/%d/%Y")
-            %td= improvement.updated_at.to_datetime.strftime("%m/%d/%Y")
+            %td= improvement.created_at.to_datetime.strftime("%d/%m/%Y")
+            %td= improvement.updated_at.to_datetime.strftime("%d/%m/%Y")
             %form
             %td#tdname
-              = form_for improvement  do |f|
+              = form_for improvement, remote:true  do |f|
                 =f.select(:status_id, options_for_select([['Inicializado',1],['Em Progresso',2],['Finalizado',3]], improvement.status.id), {}, :id => "select_status")
                 = f.submit "Atualizar Status", :title => nil, class: "btn btn-primary btn-go btn-table", :id => "botao_teste"
             %td
@@ -66,3 +66,8 @@
     %br/
 
 :javascript
+
+  $("#botao_teste").click(function(e){
+         $('#tdname').html('#select_status');
+         e.preventDefault
+    });
