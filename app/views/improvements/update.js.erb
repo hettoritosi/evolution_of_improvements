@@ -1,13 +1,10 @@
 
-<%case%>
+<%if params[:improvement][:select_controller] == 'show' %>
+    $("#improvements").html("<%= escape_javascript(render :partial => "users/show", :locals => { :improvements => @improvements}) %>");
 
-<%when params[:improvement][:select_controller] == 'show' %>
-   $("#improvements").html("<%= escape_javascript(render :partial => "users/show", :locals => { :improvements => @improvements}) %>");
-
-<%when params[:improvement][:select_controller] == 'graveyard'%>
+<%elsif params[:improvement][:select_controller] == 'graveyard'%>
     $("#improvements_graveyard").html("<%= escape_javascript(render :partial => "graveyard/index", :locals => { :improvements => @improvements_graveyard}) %>");
 
-<%when params[:improvement][:select_controller] == 'index'%>
-    $("#improvements_index").html("<%= escape_javascript(render :partial => "improvements/index", :locals => { :improvements => @improvements_index}) %>");
-
+<%elsif params[:improvement][:select_controller] == 'index'%>
+    $("#improvements_index").html("<%= escape_javascript(render :partial => "improvements/index", :locals => { :improvements => @improvements_index}) %>")
 <%end%>
