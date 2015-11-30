@@ -1,0 +1,33 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th= sortable "title", "Título"
+      %th Categoria
+      %th Conteúdo
+      %th= sortable "user_id", "Criado por"
+      %th= sortable "user_id", "Responsável"
+      %th= sortable "created_at", "Criado em"
+      %th= sortable "updated_at", "Atualizado em"
+      %th= sortable "status_id", "Status"
+      %th{:colspan => "3"}
+  %tbody{:id => "all_improvements"}
+  - improvements.each do |improvement|
+    %tr{:class => improvement.status ? improvement.status.get_class : 1 }
+      %td= improvement.title
+      %td= improvement.category
+      %td= improvement.content
+      %td= improvement.name
+      %td= improvement.responsible.name
+      %td= improvement.created_at.to_datetime.strftime("%d/%m/%Y")
+      %td= improvement.updated_at.to_datetime.strftime("%d/%m/%Y")
+      %form
+      %td#tdname
+        = form_for improvement, remote:true  do |f|
+          =f.select(:status_id, options_for_select([['Inicializado',1],['Em Progresso',2],['Finalizado',3]], improvement.status ? improvement.status.id : 1))
+          =f.hidden_field :select_controller, :value => "show"
+          =f.submit "Atualizar Status", :title => nil, class: "btn btn-primary btn-go btn-table"
+      %td
+        =link_to 'Exibir', improvement, class: "btn btn-primary btn-go btn-table"
+        - if current_user.id == improvement.user_id || current_user.admin?
+          = link_to 'Editar', edit_improvement_path(improvement), class: "btn btn-primary btn-go btn-table"
+          = link_to 'Deletar', improvement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-go btn-table"

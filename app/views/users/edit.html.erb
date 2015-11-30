@@ -28,10 +28,15 @@
 
             <%= f.label :password_confirmation, "Confirmação" %>
             <%= f.password_field :password_confirmation %>
-
             <% if current_user.admin? && !current_user?(@user) %>
             <%= f.label :permission, "Permissão" %>
             <%= f.collection_radio_buttons :permission, [[true, 'Sim'] ,[false, 'Não']], :first, :last %>
+            <% end %>
+            <br>
+            <br>
+            <% if current_user.admin? && !current_user?(@user) %>
+                <%= f.label :admin, "Administrador" %>
+                <%= f.collection_radio_buttons :admin, [[true, 'Sim'] ,[false, 'Não']], :first, :last %>
             <% end %>
 
             <%= f.submit "Salvar Mudanças", class: "btn btn-primary" %>

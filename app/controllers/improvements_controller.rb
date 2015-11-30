@@ -83,10 +83,26 @@ end
   # PATCH/PUT /improvements/1
   # PATCH/PUT /improvements/1.json
   def update
+    all_status = Status.get_all_status
+    @improvements = Improvement.search(params[:search]).where("(responsible_id = ?) AND status_id != 3", current_user.id)
+                        .where("status_id in (?)", params[:status] || all_status)
+                        .order(sort_column + " " + sort_direction)
+                        .paginate(:per_page => 10, :page => params[:page])
+
+    @improvements_graveyard = Improvement.search(params[:search]).where("status_id = 3", current_user.id)
+                        .where("status_id in (?)", params[:status] || all_status)
+                        .order(sort_column + " " + sort_direction)
+                        .paginate(:per_page => 10, :page => params[:page])
+
+    @improvements_index = Improvement.search(params[:search]).where("status_id = 1 OR status_id = 2", current_user.id)
+                        .where("status_id in (?)", params[:status] || all_status)
+                        .order(sort_column + " " + sort_direction)
+                        .paginate(:per_page => 10, :page => params[:page])
+
+
     respond_to do |format|
       if @improvement.update(improvement_params)
         format.html { redirect_to improvements_path, notice: 'Tarefa foi atualizada com sucesso.' }
-        format.json { render :show, status: :ok, location: @improvement }
         format.js
       else
         format.html { render :edit }

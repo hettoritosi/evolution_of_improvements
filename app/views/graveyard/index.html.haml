@@ -1,0 +1,30 @@
+- provide(:title, @user.name)
+.col-md-12
+  .col-md-2
+    .row
+      %aside
+        %section.user_info
+          %h1
+            = gravatar_for @user
+            = @user.name
+    %p
+      %strong Nome:
+      = @user.name
+    %p
+      %strong Email:
+      = @user.email
+    %br/
+    %form
+      %p
+      = form_tag improvements_path, :method => 'get' do
+        = text_field_tag :search, params[:search] , placeholder: params[:search]
+        = submit_tag "Buscar", :title => nil,class: "btn btn-primary btn-go"
+  .col-md-10
+    %h1 Cemitério
+    %br/
+    = will_paginate @improvements
+    %br/
+    %div{:id => "improvements_graveyard"}
+      = render :partial => "index", :locals => {:improvements => @improvements}
+    = will_paginate @improvements
+    %br/
